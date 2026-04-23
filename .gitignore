@@ -61,8 +61,8 @@ Thumbs.db
 # Logs
 *.log
 
-# Model artifacts (often large; keep out of repo unless needed)
-/backend/model/*.pt
+# # Model artifacts (often large; keep out of repo unless needed)
+# /backend/model/*.pt
 
 # Full project virtualenv (do not commit)
 /fullstack/
