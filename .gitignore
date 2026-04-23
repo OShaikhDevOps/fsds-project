@@ -73,9 +73,9 @@ Thumbs.db
 # Other local files
 *.sqlite3
 
-# Terraform State
+# Terraform
+**/.terraform/
 .tfstate
 .tfstate*
 *.tfstate
 *.tfstate.*
-/iac/ec2/.terraform/providers/
