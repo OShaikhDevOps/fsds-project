@@ -30,7 +30,7 @@ streamlit run frontend/streamlit_app.py
 
 **1) Model**
 - **Location:** [backend/model/best_fruit_model.pt](backend/model/best_fruit_model.pt)
-- **Notes:** The model is an Ultralytics/Torch `.pt` file. It may be large — avoid committing model artifacts to git (the repo `.gitignore` already ignores `/backend/model/*.pt`). For production, store the model in S3 and download at startup or mount it into the container.
+- **Notes:** The model is an Ultralytics/Torch `.pt` file. For production, store the model in S3 and download at startup or mount it into the container.
 
 **2) Frontend**
 - **What:** Streamlit UI for uploading images and showing predictions.
