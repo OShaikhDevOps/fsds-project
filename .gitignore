@@ -79,3 +79,6 @@ Thumbs.db
 .tfstate*
 *.tfstate
 *.tfstate.*
+
+# Claude
+/.claude/
