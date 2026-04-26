@@ -1,0 +1,25 @@
+FROM python:3.11-slim-bullseye
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+	PYTHONUNBUFFERED=1
+
+WORKDIR /app/backend
+
+# system deps needed for some packages (Pillow, torch wheels may include many deps)
+RUN apt-get update && apt-get install -y --no-install-recommends \
+	build-essential git curl libsndfile1 libgl1 libglib2.0-0 libgomp1 ca-certificates && rm -rf /var/lib/apt/lists/*
+
+
+# Install Python dependencies first to leverage Docker layer caching
+COPY ./requirements.txt ./requirements.txt
+RUN pip install --upgrade pip setuptools wheel && \
+	pip install --no-cache-dir -r requirements.txt
+
+# Copy app sources (model may be large; consider mounting at runtime)
+COPY ./ ./
+
+EXPOSE 8000
+
+# Default command runs the FastAPI app with uvicorn
+CMD ["uvicorn", "inference:app", "--host", "0.0.0.0", "--port", "8000"]
+

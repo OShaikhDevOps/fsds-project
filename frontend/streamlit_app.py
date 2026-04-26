@@ -1,14 +1,15 @@
 import io
-
 import requests
 import streamlit as st
 from PIL import Image
-
+import os
 
 st.title("Fruit Ripeness Demo")
 st.write("Upload an image or provide a URL. Ensure the backend is running at the endpoint below.")
 
-endpoint = st.text_input("Inference endpoint", "http://localhost:8000/predict")
+
+API_ENDPOINT = os.getenv("API_ENDPOINT")
+endpoint = st.text_input("Inference endpoint", f"http://{API_ENDPOINT}:8000/predict")
 
 uploaded = st.file_uploader("Upload image", type=["png", "jpg", "jpeg"]) 
 img_url = st.text_input("Or image URL")
